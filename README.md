@@ -10,6 +10,24 @@ The most common use case is to run the container. The command for running is sav
 
 I'd advice to you to run the command `docker run -it --rm -v $(pwd):/work andreaswachs/prdattools:latest` from your project's directory, instead of `make run`.
 
+#### Commands to use while running
+
+Running the lexer:
+
+```bash
+fslex <...>
+```
+
+Compiling generated `fs` files:
+
+```bash
+fsc <...>
+```
+
+`fsc` is a bash function defined in `/root/.bashrc` where it copies the fsyacc runtime into the current directory and compiles the given files with that runtime.
+
+
+
 ### Building
 
 You can build a new Docker container if you've made changes to the dockerfile with
