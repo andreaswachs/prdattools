@@ -29,16 +29,5 @@ RUN curl -Lo ripgrep.deb $RIPGREP_URL \
     && apt install -y ./ripgrep.deb \
     && rm -f ./ripgrep.deb
 
-# Install AstroNVIM, but don't do PackerSync yet
-RUN git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-
-# This is for the PackerSync
-# taken from https://github.com/wbthomason/packer.nvim/issues/502#issuecomment-1135331998
-# RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-# RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-# Clean up after installs
-# RUN apt autoremove git && apt clean
-
 ENTRYPOINT [ "bash" ]
 
