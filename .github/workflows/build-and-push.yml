@@ -1,0 +1,31 @@
+name: Build and push Docker image
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+# Prevent concurrent runs
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout
+
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+      - uses: andreaswachs/go-dagger@v1
+        with:
+          args: build_and_push.go buildAndPush
+          
