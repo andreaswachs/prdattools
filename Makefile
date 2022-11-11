@@ -1,4 +1,4 @@
-.PHONY: build
+.HONY: build
 build: 
 	docker build -t andreaswachs/prdattools:latest -f Dockerfile.prdattools .
 
@@ -12,4 +12,5 @@ push:
 	docker push andreaswachs/prdattools:latest
 
 
+.PHONY:
 build-and-push: build push
