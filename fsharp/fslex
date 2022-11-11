@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	BASE=$HOME/.local/bin/fsharp
+	BASE=$HOME/fsharp
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	BASE=$HOME/bin/fsharp
 elif [[ "$OSTYPE" == "cygwin" ]]; then

@@ -1,10 +1,14 @@
-export PATH=/root/.local/bin/fsharp/:$PATH
+# The /fsharp directory
+FSHARP=/root/fsharp
 
+# Update $PATH
+export PATH=$FSHARP:$PATH
+export PATH=/root/bin:$PATH
 
-FSLEXYACC_RUNTIME="/root/.local/bin/fsharp/FsLexYacc.Runtime.dll"
+export FSLEXYACC_RUNTIME="$FSHARP/FsLexYacc.Runtime.dll"
 
-fsc() {
-  rm -f "FsLexYacc.Runtime.dll" || true
-  fsharpc -r "${FSLEXYACC_RUNTIME}" $@
-  cp "${FSLEXYACC_RUNTIME}" .
+get_deps() {
+  cp $FSLEXYACC_RUNTIME .
 }
+
+
