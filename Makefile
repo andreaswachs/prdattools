@@ -5,7 +5,3 @@ build:
 .PHONY: run
 run:
 	docker run -it --rm -v $(pwd):/work andreaswachs/prdattools:latest
-
-.PHONY:
-build-and-push:
-	go run main.go build_and_push.go buildAndPush
