@@ -23,11 +23,6 @@ Compiling generated `fs` files:
 ```bash
 fsc <...>
 ```
-
-`fsc` is a bash function defined in `/root/.bashrc` where it copies the fsyacc runtime into the current directory and compiles the given files with that runtime.
-
-
-
 ### Building
 
 You can build a new Docker container if you've made changes to the dockerfile with
@@ -36,4 +31,3 @@ You can build a new Docker container if you've made changes to the dockerfile wi
 make build
 ```
  
-When making your own changes, you might want to change the image tag to your own, as not to confuse it with the "official" images that are downloaded from my Docker Hub repository.
