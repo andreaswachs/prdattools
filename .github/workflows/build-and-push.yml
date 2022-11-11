@@ -28,4 +28,5 @@ jobs:
       - uses: andreaswachs/go-dagger@v1
         with:
           args: build_and_push.go buildAndPush
+          working-directory: pipelines
           
