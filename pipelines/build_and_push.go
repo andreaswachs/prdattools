@@ -7,8 +7,15 @@ import (
 	"dagger.io/dagger"
 )
 
-func buildAndPush(ctx context.Context, _args []string) error {
+func buildAndPush(ctx context.Context, args []string) error {
 	fmt.Println("Building and pushing with Dagger")
+
+	tag := "latest"
+	branch := "main"
+	if len(args) == 2 {
+		tag = args[1]
+		branch = args[0]
+	}
 
 	// initialize Dagger client
 	client, err := dagger.Connect(ctx)
@@ -18,12 +25,12 @@ func buildAndPush(ctx context.Context, _args []string) error {
 	defer client.Close()
 
 	repo := client.Git("https://github.com/andreaswachs/prdattools").
-		Branch("main").
+		Branch(branch).
 		Tree()
 
 	resp, err := client.Container().
 		Build(repo).
-		Publish(ctx, "andreaswachs/prdattools:latest")
+		Publish(ctx, fmt.Sprintf("andreaswachs/prdattools:%s", tag))
 
 	if err != nil {
 		return err
