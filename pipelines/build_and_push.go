@@ -17,6 +17,8 @@ func buildAndPush(ctx context.Context, args []string) error {
 		branch = args[0]
 	}
 
+	fmt.Printf("Building branch %s with tag %s", branch, tag)
+
 	// initialize Dagger client
 	client, err := dagger.Connect(ctx)
 	if err != nil {
